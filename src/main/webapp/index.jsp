@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.orion.Chart"%>
 <html lang="en">
 
 <head>
@@ -31,10 +32,30 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<script src="https://www.google.com/jsapi"></script>
+ <%@  page import="java.util.Arrays"  %>
 
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+	   var random = <%Arrays.asList(Chart.returnArray());%>
+    alert("sdcsdcsdc" + <%Arrays.asList(Chart.returnArray()).toString();%> );
+     
+    var options = {
+     title: 'vvvv',
+     is3D: true,
+     pieResidueSliceLabel: 'vvvvvvv'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('air'));
+     chart.draw(data, options);
+   }
+  </script>
 </head>
 
 <body id="page-top">
+
+
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -137,7 +158,20 @@
             </div>
         </div>
     </section>
-
+    
+    
+    <section>
+     <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                <div id="air" style="width: 500px; height: 400px;"></div>
+                    <jsp:include page="jsp/skills.jsp" />
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+    
+</section>>
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
@@ -239,7 +273,8 @@
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Free Download at Start Bootstrap!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!!!!</a>
+                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
+                       
             </div>
         </div>
     </aside>
